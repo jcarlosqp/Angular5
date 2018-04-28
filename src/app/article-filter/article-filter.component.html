@@ -1,0 +1,12 @@
+
+<div style="text-align: center">
+    <p>
+        article-filter works! My filter:
+      </p>
+  <select name="sortBy" id="sortBy" [ngModel]="filters.sortBy"
+   (ngModelChange)="onSelectSortBy($event)" >
+    <option *ngFor="let item of sortListFilters" [value]="item.value">
+      {{item.text}}
+    </option>
+  </select>
+</div>

@@ -1,0 +1,20 @@
+<div class="ui grid">
+    <div class="two column row">
+        <div class="right floated column">
+            <app-article-filter (onUpdateFilters)="filters=$event"></app-article-filter>
+        </div>
+      </div>
+
+  <div class="four column row">
+    <div class="ui main text container">
+      
+      <div>
+        <p>Count:{{count$ | async}}</p>
+        <button (click)="increment()">Incrementar</button>
+        <button (click)="decrement()">Decrementar</button>
+      </div>
+
+      <app-articles-list *ngIf="!!filters.sortBy" [sortBy]="filters.sortBy"></app-articles-list>
+    </div>
+  </div>
+</div>

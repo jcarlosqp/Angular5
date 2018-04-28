@@ -1,0 +1,16 @@
+<div style="text-align: center">
+    <p>
+      new-article works!
+    </p>
+    <div>
+      <p>Name:</p><input #title type="text" />
+    </div>
+    <div>
+      <p>Link:</p><input #link type="text"/>
+    </div>
+    <div>
+      <a href (click)="newArticle(title.value,link.value)">
+        Save Article 
+      </a>
+    </div>
+</div>
