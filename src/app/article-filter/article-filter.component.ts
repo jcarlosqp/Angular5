@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { IOptionElement, IArticleFilterParam } from '../_models/shared.model';
 
 @Component({
   selector: 'app-article-filter',
@@ -7,8 +8,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 
 export class ArticleFilterComponent implements OnInit {
-  sortListFilters: Models.IOptionElement[]=[];
-  filters: Models.IArticleFilterParam = {
+  sortListFilters: IOptionElement[]=[];
+  filters: IArticleFilterParam = {
     sortBy: "",
     searchText: "",
     pageNumber: undefined,

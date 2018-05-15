@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Article } from '../_models/article.model';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { IArticleFilterParam } from '../_models/shared.model';
 
 @Injectable()
 export class ArticlesService {
@@ -33,7 +34,7 @@ export class ArticlesService {
 
   }
 
-  getList(filters:Models.IArticleFilterParam): Observable<Article[]> {
+  getList(filters:IArticleFilterParam): Observable<Article[]> {
     let params = new HttpParams();
     params = params.append('_sort', filters.sortBy.toLowerCase());
     params = params.append('_order',"desc");

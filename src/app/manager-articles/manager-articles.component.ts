@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 import { CounterActions } from '../store/app.action';
+import { IArticleFilterParam } from '../_models/shared.model';
 
 @Component({
   selector: 'app-manager-articles',
@@ -9,7 +10,7 @@ import { CounterActions } from '../store/app.action';
   styleUrls: ['./manager-articles.component.scss']
 })
 export class ManagerArticlesComponent implements OnInit {
-  filters: Models.IArticleFilterParam = {
+  filters: IArticleFilterParam = {
     sortBy: "",
     searchText: "",
     pageNumber: undefined,

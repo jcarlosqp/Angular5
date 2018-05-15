@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Article } from '../_models/article.model';
 import { ArticlesService } from '../shared/articles.service';
 import { Observer } from 'rxjs/Observer';
+import { IArticleFilterParam } from '../_models/shared.model';
 
 @Component({
   selector: 'app-articles-list',
@@ -14,7 +15,7 @@ export class ArticlesListComponent implements OnInit, OnChanges {
   listObservable:any;
 
   sortValue: any = "";
-  filters: Models.IArticleFilterParam = {
+  filters: IArticleFilterParam = {
     sortBy: "",
     searchText: "",
     pageNumber: undefined,
