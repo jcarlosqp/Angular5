@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Article } from '../_models/article.model';
+import { ArticlesService } from '../shared/articles.service';
 
 @Component({
   selector: 'app-article',
@@ -9,7 +10,7 @@ import { Article } from '../_models/article.model';
 export class ArticleComponent implements OnInit {
   @Input() article: Article;
 
-  constructor() { }
+  constructor(private articleService:ArticlesService) { }
 
   ngOnInit() {
 
@@ -36,6 +37,39 @@ export class ArticleComponent implements OnInit {
     currentVotes -= 1;
     this.article.votes=currentVotes;
     return false;
+  }
+
+  delete(id){
+    this.articleService.delete(id).subscribe(
+      result=>{
+        console.log("elimino ok");
+      }, err=>{
+        console.log("error");
+      },
+      ()=>{
+        console.log("finish");
+      }
+    )
+  }
+  edit(id, title,link,votes){
+    this.articleService.edit(id,title,link,votes).subscribe(
+      result=>{
+        this.article.title=title;
+        this.article.link=link;
+        this.article.votes=votes;
+        this.stater(0);
+ 
+        console.log("Edito ok");
+      }, err=>{
+        console.log("error edit");
+      },
+      ()=>{
+        console.log("finish");
+      }
+    )
+  }
+  stater(pState:number){
+    this.article.state=pState;
   }
 
       // domain() is a utility function that extracts

@@ -41,10 +41,14 @@ export class ArticlesService {
 }
 
   newArticle(title:string, link:string):any{
-
-
     return this.http.post("http://localhost:3000/articles",new Article(title, link,0));
-    
+  }
 
+  edit(id,title:string, link:string, votes):any{
+    return this.http.put("http://localhost:3000/articles/"+id,new Article(title, link,votes,id));
+  }
+
+  delete(id:string):any{
+    return this.http.delete("http://localhost:3000/articles/"+id);
   }
 }

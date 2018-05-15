@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 import { Article } from '../_models/article.model';
@@ -11,11 +11,13 @@ import { Observer } from 'rxjs/Observer';
   styleUrls: ['./new-article.component.scss']
 })
 export class NewArticleComponent implements OnInit {
-
+  @Input() article: Article;
   constructor(private articleService:ArticlesService) { }
 
   ngOnInit() {
   }
+
+  
 
   newArticle(title,link){
     this.articleService.newArticle(title,link).subscribe(
@@ -29,4 +31,6 @@ export class NewArticleComponent implements OnInit {
       }
     )
   }
+
+ 
 }

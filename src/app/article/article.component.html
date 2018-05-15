@@ -9,10 +9,22 @@
   </div>
 </div>
 <div class="twelve wide column">
-  <a class="ui large header" href="{{ article.link }}">
-    {{ article.title }}
-  </a>
-  <div class="meta">({{ domain(article.link) }})</div>
+  <div *ngIf="article.state!==1">
+      <a class="ui large header" href="{{ article.link }}">
+        {{ article.title }} 
+      </a>
+      <div class="meta">({{ domain(article.link) }})</div>
+  </div>
+  <div *ngIf="article.state===1">
+    <p contenteditable="true">Name: <input #title type="text" value="{{ article.title }}" /> </p>
+    <p contenteditable="true">Link: <input #link type="text" value="{{ article.link }}"/></p>
+    <a href (click)="edit(article.id,title.value,link.value, article.votes)"><i class="save icon"></i>Save</a>
+    <a  (click)="stater(0)"><i class="cancel icon"></i>Cancel</a>
+  </div>
+
+  <div>
+
+
   <ul class="ui big horizontal list voters">
     <li class="item">
       <a href (click)="voteUp(article.votes)">
@@ -24,6 +36,20 @@
       <a href (click)="voteDown(article.votes)">
         <i class="arrow down icon"></i>
         downvote
+      </a>
+    </li>
+
+    <li class="item"> 
+      <a  (click)="stater(1)">
+        <i class="edit icon"></i>
+        Edit
+      </a>
+    </li>
+
+    <li class="item"> 
+      <a href (click)="delete(article.id)">
+        <i class="delete icon"></i>
+        Delete
       </a>
     </li>
   </ul>
